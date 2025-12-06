@@ -25,26 +25,57 @@ Validate patient & doctor before booking
 
 Simple, menu-driven CLI for quick testing and learning. 🛠 Technologies Used Technology Purpose Java Core application logic MySQL Database backend JDBC Database connectivity VS Code IDE MySQL Connector/J JDBC driver
 
-Hospital-Management-System/ │── src/ │ ├── DBConnection.java │ ├── HospitalManagement.java │ ├── Patients.java │ ├── Doctors.java │
-│ │── lib/ │ └── mysql-connector-j-8.x.x.jar │ │── README.md
+Hospital-Management-System/ 
+│── src/
+│   ├── DBConnection.java 
+│   ├── HospitalManagement.java
+│   ├── Patients.java │ ├── Doctors.java │
+│  
+│── lib/
+│   └── mysql-connector-j-8.x.x.jar 
+│ │── README.md
 
 Database Setup (MySQL)
 
-Create Database CREATE DATABASE hospital; USE hospital;
+1. Create Database
+   CREATE DATABASE hospital; USE hospital;
 
-Create Table Patients Table CREATE TABLE patients ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, age INT NOT NULL, gender VARCHAR(10) NOT NULL );
+2. Create Table
+   Patients Table
+    CREATE TABLE patients (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    gender VARCHAR(10) NOT NULL
+    );
 
-Doctors Table CREATE TABLE doctors ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL, specialty VARCHAR(100) NOT NULL );
+ Doctors Table 
+ CREATE TABLE doctors (
+ id INT AUTO_INCREMENT PRIMARY KEY, 
+ name VARCHAR(255) NOT NULL,
+ specialty VARCHAR(100) NOT NULL
+ );
 
-Appointments Table
+Appointments Table 
 
-CREATE TABLE appointments ( id INT AUTO_INCREMENT PRIMARY KEY, patient_id INT NOT NULL, doctor_id INT NOT NULL, appointment_date DATE NOT NULL, FOREIGN KEY (patient_id) REFERENCES patients(id), FOREIGN KEY (doctor_id) REFERENCES doctors(id) );
+CREATE TABLE appointments (
+id INT AUTO_INCREMENT PRIMARY KEY,
+patient_id INT NOT NULL,
+doctor_id INT NOT NULL,
+appointment_date DATE NOT NULL, 
+FOREIGN KEY (patient_id) REFERENCES patients(id),
+FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+);
 
 How to Run the Project
 
-Download or clone the repository git clone https://github.com/yourusername/hospital-management-system.git
+Download or clone the repository 
+git clone https://github.com/yourusername/hospital-management-system.git
 
-Add MySQL JDBC Driver Go to lib/ Add this file: mysql-connector-j-8.x.x.jar Right-click → Add to Build Path (VS Code / Eclipse).
+Add MySQL JDBC Driver
+Go to lib/
+Add this file:
+mysql-connector-j-8.x.x.jar Right-click → Add to Build Path (VS Code / Eclipse).
 
 Update MySQL credentials in DBConnection.java private static final String URL = "jdbc:mysql://localhost:3306/hospital?useSSL=false"; private static final String USER = "root"; // your MySQL username private static final String PASS = "password"; // your MySQL password'
 
